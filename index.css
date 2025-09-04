@@ -23,14 +23,19 @@ body {
     color: #dc2626;
 }
 
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /* Header */
 .header {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 0; 
     right: 0;
     z-index: 1000;
-    background: rgba(20, 20, 20, 0.7);
+    background: #111111;
     backdrop-filter: blur(10px);
     border-bottom: 1px solid #374151;
 }
@@ -40,6 +45,10 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 64px;
+}
+
+.logo{
+    align-items: center;
 }
 
 .logo h1 {
@@ -556,6 +565,43 @@ body {
     color: #ffffff;
 }
 
+/* Mobile Menu (fixed sliding from right) */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;   /* start hidden off-screen */
+    height: 100vh;  /* full height */
+    width: 80%;     /* covers 80% of screen */
+    max-width: 320px; 
+    background: #111111; 
+    display: flex;
+    flex-direction: column; 
+    padding: 2rem 1.5rem; 
+    transition: right 0.3s ease-in-out;
+    z-index: 2000;
+}
+
+.mobile-menu.active {
+    right: 0;   /* slide in */
+}
+
+.mobile-menu-content {
+    margin-top: 60px; /* push links below header */
+}
+
+.mobile-menu-content a {
+    display: block;
+    padding: 1rem 0;
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #333;
+}
+
+.mobile-menu-content a:hover {
+    color: #ffffff;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .mobile-menu-btn {
@@ -566,9 +612,33 @@ body {
         display: none;
     }
 
-    .mobile-menu.active {
-        display: block;
+    /* removed: .mobile-menu.active { display: block; } */
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+    } 
+
+    .section-header h2 {
+        font-size: 2rem;
     }
+
+    .features-grid,
+    .story-section,
+    .products-grid,
+    .testimonials-grid,
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: center;
+    }
+
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
 
     .hero-content {
         grid-template-columns: 1fr;
